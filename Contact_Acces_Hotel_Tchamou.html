@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contactez l'Hôtel Demo à Bangangté, Cameroun, pour demander des informations ou préparer votre réservation.">
+  <title>Contact & Accès | Hôtel Demo — Bangangté</title>
+  <style>
+    :root {
+      --forest: #173f32;
+      --forest-dark: #102e25;
+      --gold: #c9a86a;
+      --cream: #f7f4ed;
+      --paper: #fffdf8;
+      --ink: #252a26;
+      --muted: #6b716b;
+      --line: #e6e0d4;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .topline { height: 5px; background: var(--gold); }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,253,248,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .nav {
+      max-width: 1160px; margin: auto; padding: 15px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .brand { text-decoration: none; display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border: 1px solid var(--gold); border-radius: 50%;
+      color: var(--forest); font-family: Georgia, serif; font-size: 22px;
+    }
+    .brand-name { display: block; font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: var(--forest); line-height: 1.1; }
+    .brand-sub { display: block; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; font-size: 9px; margin-top: 5px; }
+    nav { display: flex; gap: 22px; align-items: center; }
+    nav a { text-decoration: none; font-size: 13px; color: #4d554f; }
+    nav a:hover, nav a[aria-current="page"] { color: var(--forest); }
+    .nav-cta, .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 0; border-radius: 3px; background: var(--forest); color: white;
+      padding: 12px 18px; text-decoration: none; font-size: 13px; font-weight: 650;
+      transition: transform .2s, background .2s;
+    }
+    .nav-cta:hover, .button:hover { background: var(--forest-dark); transform: translateY(-1px); }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: white; padding: 8px 11px; border-radius: 3px; font-size: 20px; }
+    .hero {
+      background: linear-gradient(110deg, rgba(16,46,37,.96), rgba(23,63,50,.84)),
+        url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1800&q=85') center/cover;
+      color: white; padding: 78px 24px 82px;
+    }
+    .hero-inner { max-width: 1160px; margin: auto; }
+    .eyebrow { color: var(--gold); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; }
+    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
+    h1 { font-size: clamp(38px, 5vw, 62px); line-height: 1.08; max-width: 700px; margin: 15px 0 18px; }
+    .hero p { max-width: 600px; color: rgba(255,255,255,.82); font-size: 16px; margin: 0; }
+    .breadcrumbs { max-width: 1160px; margin: auto; padding: 17px 24px 0; font-size: 12px; color: var(--muted); }
+    .breadcrumbs a { text-decoration: none; }
+    .section { max-width: 1160px; margin: auto; padding: 62px 24px; }
+    .section-head { max-width: 680px; margin-bottom: 30px; }
+    .section-head h2 { font-size: clamp(30px, 3vw, 42px); color: var(--forest); margin: 8px 0 12px; line-height: 1.15; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .contact-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 28px; align-items: stretch; }
+    .contact-panel { background: var(--cream); padding: 30px; border: 1px solid var(--line); }
+    .contact-panel h3 { font-size: 25px; color: var(--forest); margin: 0 0 22px; }
+    .info-row { display: grid; grid-template-columns: 42px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid #ded8ca; }
+    .info-row:last-of-type { border-bottom: 0; }
+    .info-icon { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid #d8c69f; color: var(--forest); border-radius: 50%; font-size: 18px; }
+    .info-row strong { display: block; color: var(--forest); font-size: 14px; margin-bottom: 3px; }
+    .info-row p { color: #606760; margin: 0; font-size: 14px; }
+    .small-note { color: var(--muted); font-size: 12px; margin-top: 17px; }
+    .map-panel { min-height: 430px; background: #e8e5db; position: relative; overflow: hidden; }
+    .map-panel img { width: 100%; height: 100%; min-height: 430px; object-fit: cover; display: block; filter: saturate(.75); }
+    .map-overlay {
+      position: absolute; left: 22px; right: 22px; bottom: 22px; background: rgba(255,253,248,.96);
+      padding: 22px; box-shadow: 0 12px 35px rgba(0,0,0,.13);
+    }
+    .map-overlay h3 { color: var(--forest); font-size: 23px; margin: 0 0 6px; }
+    .map-overlay p { color: var(--muted); font-size: 13px; margin: 0 0 15px; }
+    .button-outline { display: inline-flex; border: 1px solid var(--forest); color: var(--forest); text-decoration: none; padding: 10px 15px; font-size: 13px; font-weight: 650; border-radius: 3px; }
+    .button-outline:hover { background: var(--forest); color: white; }
+    .directions { background: var(--forest); color: white; }
+    .directions .section-head h2 { color: white; }
+    .directions .section-head p { color: rgba(255,255,255,.72); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .step { border: 1px solid rgba(255,255,255,.2); padding: 25px; }
+    .step-number { font-family: Georgia, serif; font-size: 30px; color: var(--gold); }
+    .step h3 { font-size: 21px; margin: 8px 0; }
+    .step p { color: rgba(255,255,255,.72); font-size: 13px; margin: 0; }
+    .faq-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    details { border: 1px solid var(--line); padding: 18px 20px; background: white; }
+    summary { color: var(--forest); cursor: pointer; font-weight: 650; font-size: 14px; }
+    details p { color: var(--muted); font-size: 13px; margin-bottom: 0; }
+    .cta-strip { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .cta-inner { max-width: 1160px; margin: auto; padding: 38px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .cta-inner h2 { color: var(--forest); margin: 0 0 5px; font-size: 29px; }
+    .cta-inner p { color: var(--muted); margin: 0; font-size: 14px; }
+    footer { background: #102e25; color: white; padding: 34px 24px; }
+    .footer-inner { max-width: 1160px; margin: auto; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    footer p, footer a { color: rgba(255,255,255,.7); font-size: 12px; }
+    footer a { text-decoration: none; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; }
+    .demo-note { max-width: 1160px; margin: 0 auto; padding: 12px 24px; font-size: 11px; color: #75684f; background: #fff6df; border-bottom: 1px solid #ead9ad; }
+    @media (max-width: 800px) {
+      nav { display: none; position: absolute; top: 73px; left: 0; right: 0; padding: 20px 24px; background: var(--paper); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 16px; }
+      nav.open { display: flex; }
+      .menu-toggle { display: block; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .map-panel, .map-panel img { min-height: 340px; }
+      .steps { grid-template-columns: 1fr; }
+      .faq-list { grid-template-columns: 1fr; }
+      .cta-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .nav { padding: 13px 16px; }
+      .hero { padding: 58px 18px 62px; }
+      .section { padding: 44px 18px; }
+      .contact-panel { padding: 22px; }
+      .breadcrumbs { padding-left: 18px; padding-right: 18px; }
+      .brand-name { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline"></div>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="Hôtel Demo, accueil">
+        <span class="brand-mark">T</span>
+        <span><span class="brand-name">Hôtel Demo</span><span class="brand-sub">Bangangté · Cameroun</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+      <nav id="mainNav" aria-label="Navigation principale">
+        <a href="Hotel_Tchamou_Bangangte.html">Accueil</a>
+        <a href="Chambres_Hotel_Tchamou.html">Chambres</a>
+        <a href="Services_Experiences_Hotel_Tchamou.html">Services</a>
+        <a href="Contact_Acces_Hotel_Tchamou.html" aria-current="page">Contact & accès</a>
+        <a class="nav-cta" href="#contact">Nous contacter</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="demo-note">
+    Version de démonstration : confirmez l'adresse exacte, les numéros de téléphone, les horaires et les services avec l'hôtel avant publication.
+  </div>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Nous sommes à votre écoute</div>
+      <h1>Contact & accès</h1>
+      <p>Une question avant votre séjour à Bangangté ? Contactez l'équipe de l'Hôtel Demo pour demander des renseignements ou préparer votre venue.</p>
+    </div>
+  </section>
+
+  <div class="breadcrumbs"><a href="index.html">Accueil</a> &nbsp; / &nbsp; Contact & accès</div>
+
+  <main>
+    <section class="section" id="contact">
+      <div class="section-head">
+        <div class="eyebrow">Parlons de votre séjour</div>
+        <h2>Comment pouvons-nous vous aider ?</h2>
+        <p>Choisissez le moyen de contact qui vous convient. Les coordonnées ci-dessous sont à valider par l'établissement avant la mise en ligne définitive.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-panel">
+          <h3>Coordonnées</h3>
+          <div class="info-row">
+            <span class="info-icon">⌖</span>
+            <div><strong>Localisation</strong><p>Hôtel Demo, Bangangté, Région de l'Ouest, Cameroun.</p><p class="small-note" style="margin-top:5px">Adresse détaillée à confirmer avec l'hôtel.</p></div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">☎</span>
+            <div><strong>Téléphone</strong><p>Ajoutez ici le numéro officiel de l'hôtel.</p></div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">◉</span>
+            <div><strong>WhatsApp</strong><p>Écrivez-nous pour demander les disponibilités et les tarifs.</p></div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">◷</span>
+            <div><strong>Horaires d'accueil</strong><p>À confirmer directement auprès de l'établissement.</p></div>
+          </div>
+          <p class="small-note">Pour une réservation, précisez si possible vos dates d'arrivée et de départ, le nombre de personnes et le type de chambre souhaité.</p>
+          <a class="button" id="whatsappButton" href="#" target="_blank" rel="noopener noreferrer">Contacter sur WhatsApp ↗</a>
+        </div>
+
+        <div class="map-panel">
+          <img src="https://images.unsplash.com/photo-1524666041070-9c8768c2e3f9?auto=format&fit=crop&w=1200&q=85" alt="Carte et itinéraire, image illustrative">
+          <div class="map-overlay">
+            <h3>Retrouvez-nous à Bangangté</h3>
+            <p>Ouvrez Google Maps pour rechercher l'Hôtel Demo et préparer votre itinéraire. Vérifiez le point exact avant le départ.</p>
+            <a class="button-outline" href="https://www.google.com/maps/search/?api=1&query=Hotel+Demo+Bangangte+Cameroon" target="_blank" rel="noopener noreferrer">Ouvrir Google Maps ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="directions">
+      <div class="section">
+        <div class="section-head">
+          <div class="eyebrow">Préparez votre arrivée</div>
+          <h2>Avant de prendre la route</h2>
+          <p>Quelques informations simples à vérifier pour arriver sereinement.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">01</div>
+            <h3>Confirmez l'adresse</h3>
+            <p>Demandez à l'hôtel un repère local précis ou un point de localisation WhatsApp avant votre déplacement.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">02</div>
+            <h3>Vérifiez la disponibilité</h3>
+            <p>Contactez l'établissement pour confirmer les dates, le tarif et les conditions de réservation.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">03</div>
+            <h3>Préparez votre arrivée</h3>
+            <p>Indiquez votre heure d'arrivée estimée et demandez les informations utiles pour accéder à l'hôtel.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="eyebrow">Questions fréquentes</div>
+        <h2>Avant de nous contacter</h2>
+        <p>Les réponses définitives doivent être confirmées par l'hôtel.</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Comment demander une réservation ?</summary>
+          <p>Utilisez le bouton WhatsApp après configuration du numéro officiel, ou contactez directement l'hôtel par téléphone.</p>
+        </details>
+        <details>
+          <summary>Comment connaître le prix d'une chambre ?</summary>
+          <p>Demandez les tarifs actualisés selon vos dates, le nombre de personnes et le type de chambre souhaité.</p>
+        </details>
+        <details>
+          <summary>Comment obtenir l'itinéraire exact ?</summary>
+          <p>Ouvrez le lien Google Maps puis confirmez avec l'hôtel que le repère proposé correspond bien à son entrée.</p>
+        </details>
+        <details>
+          <summary>Quels sont les horaires d'arrivée et de départ ?</summary>
+          <p>Ces horaires ne sont pas renseignés dans cette maquette. Merci de les confirmer directement auprès de l'établissement.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta-strip">
+      <div class="cta-inner">
+        <div>
+          <h2>Votre séjour commence par un message.</h2>
+          <p>Contactez l'hôtel pour obtenir des informations adaptées à votre demande.</p>
+        </div>
+        <a class="button" id="whatsappButtonBottom" href="#" target="_blank" rel="noopener noreferrer">Écrire sur WhatsApp ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="brand-name" style="color:white">Hôtel Demo</div>
+        <p>Bangangté, Région de l'Ouest · Cameroun</p>
+        <p>© <span id="year"></span> Hôtel Demo — Maquette de démonstration.</p>
+      </div>
+      <div class="footer-links">
+        <a href="Hotel_Tchamou_Bangangte.html">Accueil</a>
+        <a href="Chambres_Hotel_Tchamou.html">Chambres</a>
+        <a href="Services_Experiences_Hotel_Tchamou.html">Services</a>
+        <a href="#contact">Contact & accès</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // IMPORTANT : remplacez cette valeur par le numéro WhatsApp officiel validé par l'hôtel.
+    // Format international sans +, espaces ni tirets, par exemple : 2376XXXXXXXX.
+    const WHATSAPP_NUMBER = "237XXXXXXXXX";
+    const message = "Bonjour, je souhaite obtenir des informations sur l'Hôtel Demo à Bangangté, notamment les disponibilités et les tarifs.";
+    const whatsappUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+
+    ["whatsappButton", "whatsappButtonBottom"].forEach(function(id) {
+      const button = document.getElementById(id);
+      button.href = whatsappUrl;
+      button.addEventListener("click", function(event) {
+        if (WHATSAPP_NUMBER.includes("X")) {
+          event.preventDefault();
+          alert("Pour activer WhatsApp, remplacez d'abord 237XXXXXXXXX dans le code par le numéro officiel de l'hôtel.");
+        }
+      });
+    });
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+    menuToggle.addEventListener("click", function() {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
